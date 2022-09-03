@@ -1,17 +1,17 @@
-const http = require('http'),
-  url = require('url'),
-  fs = require('fs');
+let http = require('http');
+let url = require('url');
+let fs = require('fs');
 
 http.createServer((request, response) => {
   let addr = request.url,
-    q = url.parse(addr, true),
-    filePath = '';
+      q = url.parse(addr, true),
+      filePath = '';
 
   fs.appendFile('log.txt', 'URL: ' + addr + '\nTimestamp: ' + new Date() + '\n\n', (err) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('Added to log.')''
+      console.log('Added to log.');
     }
   });
 
@@ -26,7 +26,7 @@ http.createServer((request, response) => {
       throw err;
     }
 
-    response.writeHead(200, {'Content-Type': 'test/html' });
+    response.writeHead(200, {'Content-Type':'text/html' });
     response.write(data);
     response.end();
   });
