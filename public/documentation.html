@@ -1,1 +1,248 @@
-This is an app that runs on node.js to show my top movie choices.
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <title>Documentation</title>
+  </head>
+  <body>
+    <header>
+      <h3 class="header">Documentation for My Movie API</h3>
+      <h5>My Movie API is a program to made with Javascript to prove competency with Javascript, Modules, and creating/implementing API's.</h5>
+    </header>
+    <div>
+      <p>Return a list of all movies to the user.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/movies</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>NONE</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>None</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>A JSON object holding data about all movies.<br><br>
+            {<br>
+              "title": "Sweet Home Alabama",<br>
+              "imageUrl": "https://flxt.tmsimg.com/assets/p30076_p_v12_aq.jpg",<br>
+              "genre": ["Comedy", "Romance"]<br>
+              "director": "Andy Tennant",<br>
+              "tagline": "Sometimes what you're looking for is right where you left it.",<br>
+              "description": "A young woman who has reivented herself as a New York City socialite must return home to Alabama to obtain a divorce from her husband after seven years of separation."<br>
+            }</td>
+        </tr>
+      </table>
+
+      <p>Return data about a single movie.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/movies/:title</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:title refers to the title of the specific movie the user is wanting information on.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>None</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>A JSON object holding data about a specific movie. Including title, genre, tagline, and description.<br><br>
+            {<br>
+              "title": "Pitch Perfect",<br>
+              "imageUrl": "https://m.media-amazon.com/images/I/91bAKJ3lMVL._SY679_.jpg",<br>
+              "genre": ["Comedy", "Music", "Romance"],<br>
+              "director": "Jason Moore",<br>
+              "tagline": "Get Pitch Slapped",<br>
+              "description": "Becca, a freshman at Barden University, is cajoled into joining the Bellas, her school's all-girls singing group. Injecting some much needed energy into their repertoire, The Bellas take on their male rivals in a campus competition."<br>
+            },<br></td>
+        </tr>
+      </table>
+
+      <p>Return data about a movies genre.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/movies/:title/genre</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:title refers to the title of the specific movie the user wants genre information for.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>None</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>A JSON object that includes the genre of a specific movie.<br><br>"The genre of Pride and Prejudice is: Romance"</td>
+        </tr>
+      </table>
+
+      <p>Return data about a director of a specific movie.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/movies/:title/director</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:title refers to the title of the specific movie the user wants director information for.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>None</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td> A JSON object that includes the birth year, death year, and description of the director. <br><br>"Name: John Smith <br>Birth Year: 1923 <br>Death Year: 1999<br>John Smith description"</td>
+        </tr>
+      </table>
+
+      <p>Allow users to register.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/users</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>POST</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>NONE</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>A JSON object containing name, email, and username.<br><br>"Please enter the following information.<br>Name:<br>Email:<br>Desired Username: "</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>A JSON object with the name, email, and username of new account. <br><br> "Account has been registered! <br> Name: John Smith <br> Email: johnsmith@gmail.com <br> Username: JohnSmith123"</td>
+        </tr>
+      </table>
+
+      <p>Allow users to update their username.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/users/:username</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>PUT</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:username refers to the individual username associated with the account the user wants to update.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>A JSON object containing the username associated with the account, the current username, and the updated username.<br><br>"Please enter the following information<br>Email:<br>Current Username:<br>New Username:"</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>A JSON object holding the email that was used as well as the updated username.<br><br> "Email: example@gmail.com <br> New Username: Example123"</td>
+        </tr>
+      </table>
+
+      <p>Allow users to add a movie to their list of favorites.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/users/:username/favorites/:movie</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>POST</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:username refers to the individual account the user wants to add a movie to favorites. :movie refers to the specific movie they want to add to their favorites.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>NONE</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>Text message that the movie has been added to their favorites. <br><br> "This movie has been added to your favorites."</td>
+        </tr>
+      </table>
+
+      <p>Allow users to remove a movie to their list of favorites.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/users/:username/favorites/:movie</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>DELETE</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:username refers to the individual account which the user wants to edit their favorites. :movie refers to the specific movie they want to remove from their favorites.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>NONE</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>Text alert that the movie has been removed from their favorites. <br><br> "This movie has been removed from your favorites."</td>
+        </tr>
+      </table>
+
+      <p>Allow users to deregister their account.</p>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/users/:username/delete</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>DELETE</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>:username refers to the specific username associated with the account the user wants to delete.</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>A JSON object containing the username and email they wish to deregister<br><br>"Please enter the following information<br>Username:<br>Email:"</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>Text alert that their email has been removed. <br><br> "Your email has been removed"</td>
+        </tr>
+      </table>
+
+    </div>
+  </body>
+</html>
