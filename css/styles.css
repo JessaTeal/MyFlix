@@ -1,9 +1,37 @@
 header {
   text-align: center;
   font-size: 25px;
-  background-color: lightpink;
+  background-color: lightblue;
   margin-top: 0px;
   padding: 20px;
+}
+.navigation {
+  align-content: center;
+  width: 50px;
+  grid-area: navigation;
+  text-align: left;
+}
+.tables {
+  grid-area: tables;
+}
+.about {
+  grid-area: about;
+  align-content: center;
+  text-align: center;
+  text-decoration: none;
+  padding-right: 5px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 15% 55% 30%;
+  grid-template-areas:
+    'navigation tables about';
+  gap: 10px;
+  padding: 10px;
+}
+.photo {
+  width: 150px;
+  border-radius: 40%;
 }
 body{
   padding: 0;
@@ -11,7 +39,12 @@ body{
 }
 p {
   font-size: 20px;
-  text-decoration: underline;
+}
+table {
+  width: 100%;
+}
+th {
+  width: 25%;
 }
 table, th, td {
   border: 2px solid;
@@ -29,9 +62,10 @@ td {
   right: 5px;
 }
 .button {
-  text-decoration: none;
+  width: 150px;
   background-color: lightblue;
-  height: 30px
+  margin: 5px;
+  padding: 5px;
 
 }
 a {
