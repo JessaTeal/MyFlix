@@ -1,9 +1,9 @@
-header, h3 {
+header {
   text-align: center;
   font-size: 25px;
   background-color: lightpink;
   margin-top: 0px;
-  padding: 0px;
+  padding: 20px;
 }
 body{
   padding: 0;
@@ -22,4 +22,18 @@ th {
 }
 td {
   font-size: 15px;
+}
+#button {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+.button {
+  text-decoration: none;
+  background-color: lightblue;
+  height: 30px
+
+}
+a {
+  text-decoration: none;
 }
