@@ -21,6 +21,7 @@
       <button class="button"><a href="#request7">Add Movie to Favorites</a></button><br>
       <button class="button"><a href="#request8">Remove Movie from Favorites</a></button><br>
       <button class="button"><a href="#request9">Delete Account</a></button><br>
+      <button class="button"><a href="#request10">Login to Account</a></button><br>
     </div>
     <div class="tables">
       <h3 id="request1">Return a list of all movies to the user.</h3>
@@ -316,6 +317,40 @@
         <tr>
           <th>Response Data Format</th>
           <td>Text alert that their account has been deleted. <br><hr> "Username" has been deleted.</td>
+        </tr>
+      </table>
+
+      <h3 id="request10">Login to Account</h3>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <td>/login</td>
+        </tr>
+        <tr>
+          <th>HTTP Method</th>
+          <td>Post</td>
+        </tr>
+        <tr>
+          <th>Query Parameters</th>
+          <td>NONE</td>
+        </tr>
+        <tr>
+          <th>Request Body Format</th>
+          <td>User will enter their valid Username and Password to be authenticated.</td>
+        </tr>
+        <tr>
+          <th>Response Data Format</th>
+          <td>A JSON object holding data about user that has successfully logged in.<br><hr>
+            {<br>
+              "_id": "",<br>
+              "Name": "",<br>
+              "Username": "",<br>
+              "Password": "",<br>
+              "Email": "",<br>
+              "Birthday": "",<br>
+              "FavoriteMovies": [],<br>
+              "Token": ""<br>
+            }</td>
         </tr>
       </table>
     </div>
