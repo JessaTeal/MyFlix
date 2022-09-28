@@ -14,7 +14,8 @@ const Users = Models.User;
 app.use(cors());
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect(process.env.CONNECTION_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -77,43 +78,44 @@ app.post('/users',
   check('Username', 'Username is required').isLength({min:5}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
-],
+  check('Email', 'Email does not appear to be valid').isEmail(),
+  ],
 
   (req, res) => {
 
-  let errors = validationResult(req);
+    let errors = validationResult(req);
 
-  if(!errors.isEmpty()) {
-    return res.status(422).json({errors: errors.array()});
-  }
+    if(!errors.isEmpty()) {
+      return res.status(422).json({errors: errors.array()});
+    }
 
-  let hashedPassword = Users.hashPassword(req.params.Password);
-  Users.findOne({ Username: req.body.Username })
-    .then((user) => {
-      if(user) {
-        return res.status(400).send(req.body.Username + ' already exists');
-      } else {
-        Users
-          .create({
-            Name: req.body.Name,
-            Username: req.body.Username,
-            Password: hashedPassword,
-            Email: req.body.Email,
-            Birthday: req.body.Birthday
-          })
-          .then((user) => {res.status(201).send('User has been added! \n' + user)})
-          .catch((error) => {
-            console.error(error);
-            res.status(500).send('Error: ' + error);
-          })
-      }
-    })
-      .catch((error) => {
-        console.error(error);
-        res.status(500).send('Error: ' + error);
+    let hashedPassword = Users.hashPassword(req.params.Password);
+
+    Users.findOne({ Username: req.body.Username })
+      .then((user) => {
+        if(user) {
+          return res.status(400).send(req.body.Username + ' already exists');
+        } else {
+          Users
+            .create({
+              Name: req.body.Name,
+              Username: req.body.Username,
+              Password: hashedPassword,
+              Email: req.body.Email,
+              Birthday: req.body.Birthday
+            })
+            .then((user) => {res.status(201).send('User has been added! \n' + user)})
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send('Error: ' + error);
+            })
+        }
+      })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Error: ' + error);
+        });
       });
-    });
 
 app.put('/users/:Username',  passport.authenticate('jwt', {session: false}), (req, res) => {
     Users.findOneAndUpdate(
@@ -181,6 +183,10 @@ app.delete('/users/:Username/delete', passport.authenticate('jwt', {session: fal
         res.status(500).send('Error: ' + err);
       });
 });
+
+app.get("/documentation", (req, res) => {
+  res.sendFile("public/documentation.html", {root: _dirname});
+})
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
