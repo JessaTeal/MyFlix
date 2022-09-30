@@ -1,34 +1,36 @@
-require('dotenv').config();
 const express = require('express'),
       app = express(),
       morgan = require('morgan'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
       Models = require('./models.js'),
-      cors = require('cors');
+      cors = require('cors'),
+      dotenv = require('dotenv');
+
+const port = process.env.PORT || 8080;
 
 const { check, validationResult } = require('express-validator');
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoURL = process.env.CONNECTION_URI;
+dotenv.config({ path : './config.env'});
 
-mongoose.connect( mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-let auth = require('./auth')(app);
+let auth = require('./auth.js')(app);
+
 const passport = require('passport');
-require('./passport');
+require('./passport.js');
 
 app.use(morgan('common'));
 app.get('/', (req, res) => {
   res.send('My Top Movies!');
 });
-
 
 app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
     Movies.find()
@@ -65,7 +67,7 @@ app.get('/movies/:Title/genre', passport.authenticate('jwt', {session: false}), 
 
 app.get('/movies/:Title/director', passport.authenticate('jwt', {session: false}), (req, res) => {
     Movies.findOne({ Title: req.params.Title})
-    .then((movie) =>{
+    .then((movie) => {
       res.json(movie.Director)
     })
     .catch((err) => {
@@ -78,18 +80,17 @@ app.post('/users',
   check('Username', 'Username is required').isLength({min:5}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail(),
+  check('Email', 'Email does not appear to be valid').isEmail()
   ],
-
   (req, res) => {
 
     let errors = validationResult(req);
 
     if(!errors.isEmpty()) {
-      return res.status(422).json({errors: errors.array()});
+      return res.status(422).json({ errors: errors.array() });
     }
 
-    let hashedPassword = Users.hashPassword(req.params.Password);
+    const hashedPassword = Users.hashPassword(req.body.Password);
 
     Users.findOne({ Username: req.body.Username })
       .then((user) => {
@@ -104,7 +105,7 @@ app.post('/users',
               Email: req.body.Email,
               Birthday: req.body.Birthday
             })
-            .then((user) => {res.status(201).send('User has been added! \n' + user)})
+            .then((user) => {res.status(201).json(user)})
             .catch((error) => {
               console.error(error);
               res.status(500).send('Error: ' + error);
@@ -184,17 +185,11 @@ app.delete('/users/:Username/delete', passport.authenticate('jwt', {session: fal
       });
 });
 
-app.get("/documentation", (req, res) => {
-  res.sendFile("public/documentation.html", {root: _dirname});
-})
-
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Yikes! Something isnt right!');
 });
 
-
-const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
 });
