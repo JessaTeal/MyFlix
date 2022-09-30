@@ -29,7 +29,7 @@ require('./passport.js');
 
 app.use(morgan('common'));
 app.get('/', (req, res) => {
-  res.send('My Top Movies!');
+  res.send('Welcome to my database!');
 });
 
 app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
