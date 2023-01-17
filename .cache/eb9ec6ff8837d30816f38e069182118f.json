@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"jsonwebtoken","loc":{"line":1,"column":18}}],"generated":{"js":"var jwt = require('jsonwebtoken');\n\nmodule.exports  = function(token, secretOrKey, options, callback) {\n    return jwt.verify(token, secretOrKey, options, callback);\n};\n"},"hash":"65221735aafd73f4c484d615bb9e5f8d"}

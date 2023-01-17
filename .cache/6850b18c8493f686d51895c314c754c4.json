@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"exports.encrypt = function (self, block) {\n  return self._cipher.encryptBlock(block)\n}\n\nexports.decrypt = function (self, block) {\n  return self._cipher.decryptBlock(block)\n}\n"},"hash":"bc5e9b2ea598258e46652f381b852256"}

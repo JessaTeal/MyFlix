@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./lib/async","loc":{"line":1,"column":25}},{"name":"./lib/sync","loc":{"line":2,"column":29}}],"generated":{"js":"exports.pbkdf2 = require('./lib/async')\nexports.pbkdf2Sync = require('./lib/sync')\n"},"hash":"e477afd6794040f4d9e754064ba9f2f5"}

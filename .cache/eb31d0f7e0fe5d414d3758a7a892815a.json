@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./strategy","loc":{"line":4,"column":23}}],"generated":{"js":"/**\n * Module dependencies.\n */\nvar Strategy = require('./strategy');\n\n\n/**\n * Expose `Strategy` directly from package.\n */\nexports = module.exports = Strategy;\n\n/**\n * Export constructors.\n */\nexports.Strategy = Strategy;\n"},"hash":"3caae8f7dfc293b4d47fc3e3335fe087"}

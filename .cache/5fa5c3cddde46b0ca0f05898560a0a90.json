@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./strategy","loc":{"line":3,"column":23}},{"name":"./extract_jwt.js","loc":{"line":4,"column":25}}],"generated":{"js":"'use strict';\n\nvar Strategy = require('./strategy'),\n    ExtractJwt = require('./extract_jwt.js');\n\n\nmodule.exports = {\n    Strategy: Strategy,\n    ExtractJwt : ExtractJwt\n};\n"},"hash":"fdc64115cd9b749e811d9e5b89b2be2b"}
