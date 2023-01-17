@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"buffer"}],"generated":{"js":"var Buffer = require(\"buffer\").Buffer;\nmodule.exports = function xor (a, b) {\n  var length = Math.min(a.length, b.length)\n  var buffer = new Buffer(length)\n\n  for (var i = 0; i < length; ++i) {\n    buffer[i] = a[i] ^ b[i]\n  }\n\n  return buffer\n}\n"},"hash":"f0ffb8abd1a88bfe0ffb26865c779997"}

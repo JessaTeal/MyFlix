@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./implementation","loc":{"line":3,"column":29}}],"generated":{"js":"'use strict';\n\nvar implementation = require('./implementation');\n\nmodule.exports = Function.prototype.bind || implementation;\n"},"hash":"3475543e54c605f761802b6b7c2f51dc"}

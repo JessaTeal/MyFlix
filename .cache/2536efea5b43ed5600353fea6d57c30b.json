@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"md5.js","loc":{"line":1,"column":18}}],"generated":{"js":"var MD5 = require('md5.js')\n\nmodule.exports = function (buffer) {\n  return new MD5().update(buffer).digest()\n}\n"},"hash":"e83a0227f7858f33de07f2ad080f1dc3"}

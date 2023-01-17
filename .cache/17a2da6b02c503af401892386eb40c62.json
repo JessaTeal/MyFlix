@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"module.exports = function () {\n  throw new Error('Readable.from is not available in the browser')\n};\n"},"hash":"0ec2ec12031d1e23616df841e55e81b3"}

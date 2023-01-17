@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./lib/express","loc":{"line":11,"column":25}}],"generated":{"js":"/*!\n * express\n * Copyright(c) 2009-2013 TJ Holowaychuk\n * Copyright(c) 2013 Roman Shtylman\n * Copyright(c) 2014-2015 Douglas Christopher Wilson\n * MIT Licensed\n */\n\n'use strict';\n\nmodule.exports = require('./lib/express');\n"},"hash":"1de45f84269b63627c7bac6b4a7f08f8"}
